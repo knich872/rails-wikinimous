@@ -1,0 +1,26 @@
+<nav class="navbar">
+  <h1 class="m-4">Today's Articles</h1>
+  <%= link_to "+New Article",  new_article_path(), class: "m-4" %>
+</nav>
+
+<div class="container">
+  <div class="row col-12 text-center">
+    <% @articles.each do |article| %>
+      <div class="mx-4">
+        <h2 class="">
+        <%= link_to article.title, article_path(article), class: "text-dark" %>
+          <i class="">
+          <%= link_to '',
+          article_path(article),
+          class: "mx-2 fa-xs fa-solid fa-trash-can text-dark",
+          data: {turbo_method: :delete, turbo_confirm: "Are you sure?"}
+          %>
+        </i>
+        </h2>
+        <h6 class="mb-4 text-secondary">
+        <%= article.content %>
+        </h6>
+      </div>
+    <% end %>
+  </div>
+</div>
